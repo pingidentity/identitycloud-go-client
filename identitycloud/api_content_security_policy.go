@@ -50,6 +50,22 @@ func (a *ContentSecurityPolicyAPIService) GetEnforcedContentSecurityPolicy(ctx c
 //	@return ContentSecurityPolicy
 func (a *ContentSecurityPolicyAPIService) GetEnforcedContentSecurityPolicyExecute(r ApiGetEnforcedContentSecurityPolicyRequest) (*ContentSecurityPolicy, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *ContentSecurityPolicy
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetEnforcedContentSecurityPolicyExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *ContentSecurityPolicyAPIService) internalGetEnforcedContentSecurityPolicyExecute(r ApiGetEnforcedContentSecurityPolicyRequest) (*ContentSecurityPolicy, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -181,6 +197,22 @@ func (a *ContentSecurityPolicyAPIService) GetReportOnlyContentSecurityPolicy(ctx
 //
 //	@return ContentSecurityPolicy
 func (a *ContentSecurityPolicyAPIService) GetReportOnlyContentSecurityPolicyExecute(r ApiGetReportOnlyContentSecurityPolicyRequest) (*ContentSecurityPolicy, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *ContentSecurityPolicy
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetReportOnlyContentSecurityPolicyExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *ContentSecurityPolicyAPIService) internalGetReportOnlyContentSecurityPolicyExecute(r ApiGetReportOnlyContentSecurityPolicyRequest) (*ContentSecurityPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -320,6 +352,22 @@ func (a *ContentSecurityPolicyAPIService) SetEnforcedContentSecurityPolicy(ctx c
 //
 //	@return ContentSecurityPolicy
 func (a *ContentSecurityPolicyAPIService) SetEnforcedContentSecurityPolicyExecute(r ApiSetEnforcedContentSecurityPolicyRequest) (*ContentSecurityPolicy, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *ContentSecurityPolicy
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalSetEnforcedContentSecurityPolicyExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *ContentSecurityPolicyAPIService) internalSetEnforcedContentSecurityPolicyExecute(r ApiSetEnforcedContentSecurityPolicyRequest) (*ContentSecurityPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -464,6 +512,22 @@ func (a *ContentSecurityPolicyAPIService) SetReportOnlyContentSecurityPolicy(ctx
 //
 //	@return ContentSecurityPolicy
 func (a *ContentSecurityPolicyAPIService) SetReportOnlyContentSecurityPolicyExecute(r ApiSetReportOnlyContentSecurityPolicyRequest) (*ContentSecurityPolicy, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *ContentSecurityPolicy
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalSetReportOnlyContentSecurityPolicyExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *ContentSecurityPolicyAPIService) internalSetReportOnlyContentSecurityPolicyExecute(r ApiSetReportOnlyContentSecurityPolicyRequest) (*ContentSecurityPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}

@@ -50,6 +50,22 @@ func (a *CookieDomainsAPIService) GetCookieDomains(ctx context.Context) ApiGetCo
 //	@return CookieDomains
 func (a *CookieDomainsAPIService) GetCookieDomainsExecute(r ApiGetCookieDomainsRequest) (*CookieDomains, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *CookieDomains
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetCookieDomainsExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CookieDomainsAPIService) internalGetCookieDomainsExecute(r ApiGetCookieDomainsRequest) (*CookieDomains, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -199,6 +215,22 @@ func (a *CookieDomainsAPIService) SetCookieDomains(ctx context.Context) ApiSetCo
 //
 //	@return CookieDomains
 func (a *CookieDomainsAPIService) SetCookieDomainsExecute(r ApiSetCookieDomainsRequest) (*CookieDomains, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *CookieDomains
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalSetCookieDomainsExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CookieDomainsAPIService) internalSetCookieDomainsExecute(r ApiSetCookieDomainsRequest) (*CookieDomains, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}

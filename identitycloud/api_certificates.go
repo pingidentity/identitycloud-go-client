@@ -58,6 +58,22 @@ func (a *CertificatesAPIService) CreateCertificate(ctx context.Context) ApiCreat
 //	@return Certificate
 func (a *CertificatesAPIService) CreateCertificateExecute(r ApiCreateCertificateRequest) (*Certificate, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreateCertificateExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CertificatesAPIService) internalCreateCertificateExecute(r ApiCreateCertificateRequest) (*Certificate, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -344,6 +360,22 @@ func (a *CertificatesAPIService) GetCertificateByID(ctx context.Context, id stri
 //	@return Certificate
 func (a *CertificatesAPIService) GetCertificateByIDExecute(r ApiGetCertificateByIDRequest) (*Certificate, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetCertificateByIDExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CertificatesAPIService) internalGetCertificateByIDExecute(r ApiGetCertificateByIDRequest) (*Certificate, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -629,6 +661,22 @@ func (a *CertificatesAPIService) UpdateCertificateByID(ctx context.Context, id s
 //
 //	@return Certificate
 func (a *CertificatesAPIService) UpdateCertificateByIDExecute(r ApiUpdateCertificateByIDRequest) (*Certificate, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalUpdateCertificateByIDExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CertificatesAPIService) internalUpdateCertificateByIDExecute(r ApiUpdateCertificateByIDRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

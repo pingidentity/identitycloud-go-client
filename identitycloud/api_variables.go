@@ -209,6 +209,22 @@ func (a *VariablesAPIService) CreateVariables(ctx context.Context, variableId st
 //	@return EsvVariableResponse
 func (a *VariablesAPIService) CreateVariablesExecute(r ApiCreateVariablesRequest) (*EsvVariableResponse, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvVariableResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreateVariablesExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *VariablesAPIService) internalCreateVariablesExecute(r ApiCreateVariablesRequest) (*EsvVariableResponse, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -344,6 +360,22 @@ func (a *VariablesAPIService) DeleteVariable(ctx context.Context, variableId str
 //
 //	@return EsvVariableResponse
 func (a *VariablesAPIService) DeleteVariableExecute(r ApiDeleteVariableRequest) (*EsvVariableResponse, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvVariableResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalDeleteVariableExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *VariablesAPIService) internalDeleteVariableExecute(r ApiDeleteVariableRequest) (*EsvVariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -501,6 +533,22 @@ func (a *VariablesAPIService) GetAllVariables(ctx context.Context) ApiGetAllVari
 //	@return GetAllVariables200Response
 func (a *VariablesAPIService) GetAllVariablesExecute(r ApiGetAllVariablesRequest) (*GetAllVariables200Response, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *GetAllVariables200Response
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetAllVariablesExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *VariablesAPIService) internalGetAllVariablesExecute(r ApiGetAllVariablesRequest) (*GetAllVariables200Response, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -654,6 +702,22 @@ func (a *VariablesAPIService) GetVariable(ctx context.Context, variableId string
 //
 //	@return EsvVariableResponse
 func (a *VariablesAPIService) GetVariableExecute(r ApiGetVariableRequest) (*EsvVariableResponse, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvVariableResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetVariableExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *VariablesAPIService) internalGetVariableExecute(r ApiGetVariableRequest) (*EsvVariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

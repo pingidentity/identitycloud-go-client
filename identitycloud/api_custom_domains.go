@@ -54,6 +54,22 @@ func (a *CustomDomainsAPIService) GetCustomDomains(ctx context.Context, realm st
 //	@return CustomDomains
 func (a *CustomDomainsAPIService) GetCustomDomainsExecute(r ApiGetCustomDomainsRequest) (*CustomDomains, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *CustomDomains
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetCustomDomainsExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CustomDomainsAPIService) internalGetCustomDomainsExecute(r ApiGetCustomDomainsRequest) (*CustomDomains, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -196,6 +212,22 @@ func (a *CustomDomainsAPIService) SetCustomDomains(ctx context.Context, realm st
 //
 //	@return CustomDomains
 func (a *CustomDomainsAPIService) SetCustomDomainsExecute(r ApiSetCustomDomainsRequest) (*CustomDomains, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *CustomDomains
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalSetCustomDomainsExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CustomDomainsAPIService) internalSetCustomDomainsExecute(r ApiSetCustomDomainsRequest) (*CustomDomains, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}

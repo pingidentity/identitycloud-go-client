@@ -64,6 +64,22 @@ func (a *CountAPIService) GetCount(ctx context.Context) ApiGetCountRequest {
 //	@return EsvCount
 func (a *CountAPIService) GetCountExecute(r ApiGetCountRequest) (*EsvCount, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvCount
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetCountExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CountAPIService) internalGetCountExecute(r ApiGetCountRequest) (*EsvCount, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile

@@ -65,6 +65,22 @@ func (a *PromotionAPIService) CheckLock(ctx context.Context) ApiCheckLockRequest
 //	@return PromotionLockState
 func (a *PromotionAPIService) CheckLockExecute(r ApiCheckLockRequest) (*PromotionLockState, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionLockState
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCheckLockExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalCheckLockExecute(r ApiCheckLockRequest) (*PromotionLockState, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -200,6 +216,22 @@ func (a *PromotionAPIService) GetLastReport(ctx context.Context) ApiGetLastRepor
 //	@return PromotionReport
 func (a *PromotionAPIService) GetLastReportExecute(r ApiGetLastReportRequest) (*PromotionReport, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionReport
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetLastReportExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalGetLastReportExecute(r ApiGetLastReportRequest) (*PromotionReport, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -330,6 +362,22 @@ func (a *PromotionAPIService) GetProvisionalReport(ctx context.Context) ApiGetPr
 //	@return PromotionReport
 func (a *PromotionAPIService) GetProvisionalReportExecute(r ApiGetProvisionalReportRequest) (*PromotionReport, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionReport
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetProvisionalReportExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalGetProvisionalReportExecute(r ApiGetProvisionalReportRequest) (*PromotionReport, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -459,6 +507,22 @@ func (a *PromotionAPIService) GetProvisionalRollbackReport(ctx context.Context) 
 //
 //	@return PromotionReport
 func (a *PromotionAPIService) GetProvisionalRollbackReportExecute(r ApiGetProvisionalRollbackReportRequest) (*PromotionReport, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionReport
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetProvisionalRollbackReportExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalGetProvisionalRollbackReportExecute(r ApiGetProvisionalRollbackReportRequest) (*PromotionReport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -592,6 +656,22 @@ func (a *PromotionAPIService) GetReport(ctx context.Context, reportId string) Ap
 //
 //	@return PromotionReport
 func (a *PromotionAPIService) GetReportExecute(r ApiGetReportRequest) (*PromotionReport, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionReport
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetReportExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalGetReportExecute(r ApiGetReportRequest) (*PromotionReport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -869,6 +949,22 @@ func (a *PromotionAPIService) Lock(ctx context.Context) ApiLockRequest {
 //	@return PromotionStartLocking
 func (a *PromotionAPIService) LockExecute(r ApiLockRequest) (*PromotionStartLocking, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionStartLocking
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalLockExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalLockExecute(r ApiLockRequest) (*PromotionStartLocking, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -1012,6 +1108,22 @@ func (a *PromotionAPIService) Progress(ctx context.Context) ApiProgressRequest {
 //	@return PromotionProgress
 func (a *PromotionAPIService) ProgressExecute(r ApiProgressRequest) (*PromotionProgress, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionProgress
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalProgressExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalProgressExecute(r ApiProgressRequest) (*PromotionProgress, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -1139,6 +1251,22 @@ func (a *PromotionAPIService) Rollback(ctx context.Context) ApiRollbackRequest {
 //
 //	@return RollbackStart
 func (a *PromotionAPIService) RollbackExecute(r ApiRollbackRequest) (*RollbackStart, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *RollbackStart
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalRollbackExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalRollbackExecute(r ApiRollbackRequest) (*RollbackStart, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1293,6 +1421,22 @@ func (a *PromotionAPIService) Start(ctx context.Context) ApiStartRequest {
 //	@return PromotionStart
 func (a *PromotionAPIService) StartExecute(r ApiStartRequest) (*PromotionStart, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionStart
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalStartExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalStartExecute(r ApiStartRequest) (*PromotionStart, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -1441,6 +1585,22 @@ func (a *PromotionAPIService) Unlock(ctx context.Context, promotionId string) Ap
 //
 //	@return PromotionUnlocked
 func (a *PromotionAPIService) UnlockExecute(r ApiUnlockRequest) (*PromotionUnlocked, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PromotionUnlocked
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalUnlockExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *PromotionAPIService) internalUnlockExecute(r ApiUnlockRequest) (*PromotionUnlocked, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}

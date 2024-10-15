@@ -50,6 +50,22 @@ func (a *FederationEnforcementAPIService) GetEnforcement(ctx context.Context) Ap
 //	@return FederationEnforcement
 func (a *FederationEnforcementAPIService) GetEnforcementExecute(r ApiGetEnforcementRequest) (*FederationEnforcement, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *FederationEnforcement
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetEnforcementExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *FederationEnforcementAPIService) internalGetEnforcementExecute(r ApiGetEnforcementRequest) (*FederationEnforcement, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -177,6 +193,22 @@ func (a *FederationEnforcementAPIService) SetEnforcement(ctx context.Context) Ap
 //
 //	@return FederationEnforcement
 func (a *FederationEnforcementAPIService) SetEnforcementExecute(r ApiSetEnforcementRequest) (*FederationEnforcement, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *FederationEnforcement
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalSetEnforcementExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *FederationEnforcementAPIService) internalSetEnforcementExecute(r ApiSetEnforcementRequest) (*FederationEnforcement, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}

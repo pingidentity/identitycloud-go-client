@@ -58,6 +58,22 @@ func (a *CSRsAPIService) CreateCertificateSigningRequest(ctx context.Context) Ap
 //	@return CertificateSigningRequest
 func (a *CSRsAPIService) CreateCertificateSigningRequestExecute(r ApiCreateCertificateSigningRequestRequest) (*CertificateSigningRequest, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *CertificateSigningRequest
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreateCertificateSigningRequestExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CSRsAPIService) internalCreateCertificateSigningRequestExecute(r ApiCreateCertificateSigningRequestRequest) (*CertificateSigningRequest, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -332,6 +348,22 @@ func (a *CSRsAPIService) GetCertificateSigningRequestById(ctx context.Context, i
 //
 //	@return CertificateSigningRequest
 func (a *CSRsAPIService) GetCertificateSigningRequestByIdExecute(r ApiGetCertificateSigningRequestByIdRequest) (*CertificateSigningRequest, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *CertificateSigningRequest
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetCertificateSigningRequestByIdExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CSRsAPIService) internalGetCertificateSigningRequestByIdExecute(r ApiGetCertificateSigningRequestByIdRequest) (*CertificateSigningRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -618,6 +650,22 @@ func (a *CSRsAPIService) UpdateCertificateSigningRequestById(ctx context.Context
 //
 //	@return CertificateSigningRequest
 func (a *CSRsAPIService) UpdateCertificateSigningRequestByIdExecute(r ApiUpdateCertificateSigningRequestByIdRequest) (*CertificateSigningRequest, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *CertificateSigningRequest
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalUpdateCertificateSigningRequestByIdExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CSRsAPIService) internalUpdateCertificateSigningRequestByIdExecute(r ApiUpdateCertificateSigningRequestByIdRequest) (*CertificateSigningRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

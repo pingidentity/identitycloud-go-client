@@ -50,6 +50,22 @@ func (a *SSOCookieAPIService) GetSSOCookie(ctx context.Context) ApiGetSSOCookieR
 //	@return SSOCookie
 func (a *SSOCookieAPIService) GetSSOCookieExecute(r ApiGetSSOCookieRequest) (*SSOCookie, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *SSOCookie
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetSSOCookieExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SSOCookieAPIService) internalGetSSOCookieExecute(r ApiGetSSOCookieRequest) (*SSOCookie, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -188,6 +204,22 @@ func (a *SSOCookieAPIService) ResetSSOCookie(ctx context.Context) ApiResetSSOCoo
 //
 //	@return SSOCookie
 func (a *SSOCookieAPIService) ResetSSOCookieExecute(r ApiResetSSOCookieRequest) (*SSOCookie, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *SSOCookie
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalResetSSOCookieExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SSOCookieAPIService) internalResetSSOCookieExecute(r ApiResetSSOCookieRequest) (*SSOCookie, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -331,6 +363,22 @@ func (a *SSOCookieAPIService) SetSSOCookie(ctx context.Context) ApiSetSSOCookieR
 //
 //	@return SSOCookie
 func (a *SSOCookieAPIService) SetSSOCookieExecute(r ApiSetSSOCookieRequest) (*SSOCookie, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *SSOCookie
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalSetSSOCookieExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SSOCookieAPIService) internalSetSSOCookieExecute(r ApiSetSSOCookieRequest) (*SSOCookie, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}

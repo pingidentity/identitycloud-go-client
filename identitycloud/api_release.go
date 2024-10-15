@@ -50,6 +50,22 @@ func (a *ReleaseAPIService) GetReleaseInfo(ctx context.Context) ApiGetReleaseInf
 //	@return Release
 func (a *ReleaseAPIService) GetReleaseInfoExecute(r ApiGetReleaseInfoRequest) (*Release, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Release
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetReleaseInfoExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *ReleaseAPIService) internalGetReleaseInfoExecute(r ApiGetReleaseInfoRequest) (*Release, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile

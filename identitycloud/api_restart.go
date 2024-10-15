@@ -57,6 +57,22 @@ func (a *RestartAPIService) GetRestartStatus(ctx context.Context) ApiGetRestartS
 //	@return EsvRestartStatus
 func (a *RestartAPIService) GetRestartStatusExecute(r ApiGetRestartStatusRequest) (*EsvRestartStatus, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvRestartStatus
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetRestartStatusExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *RestartAPIService) internalGetRestartStatusExecute(r ApiGetRestartStatusRequest) (*EsvRestartStatus, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -194,6 +210,22 @@ func (a *RestartAPIService) Restart(ctx context.Context) ApiRestartRequest {
 //
 //	@return EsvRestartStatus
 func (a *RestartAPIService) RestartExecute(r ApiRestartRequest) (*EsvRestartStatus, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvRestartStatus
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalRestartExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *RestartAPIService) internalRestartExecute(r ApiRestartRequest) (*EsvRestartStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}

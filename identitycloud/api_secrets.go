@@ -209,6 +209,22 @@ func (a *SecretsAPIService) ChangeSecretVersion(ctx context.Context, secretId st
 //	@return EsvSecretVersionResponse
 func (a *SecretsAPIService) ChangeSecretVersionExecute(r ApiChangeSecretVersionRequest) (*EsvSecretVersionResponse, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvSecretVersionResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalChangeSecretVersionExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SecretsAPIService) internalChangeSecretVersionExecute(r ApiChangeSecretVersionRequest) (*EsvSecretVersionResponse, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -358,6 +374,22 @@ func (a *SecretsAPIService) CreateSecret(ctx context.Context, secretId string) A
 //
 //	@return EsvSecretResponse
 func (a *SecretsAPIService) CreateSecretExecute(r ApiCreateSecretRequest) (*EsvSecretResponse, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvSecretResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreateSecretExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SecretsAPIService) internalCreateSecretExecute(r ApiCreateSecretRequest) (*EsvSecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -509,6 +541,22 @@ func (a *SecretsAPIService) CreateSecretVersion(ctx context.Context, secretId st
 //	@return EsvSecretVersionResponse
 func (a *SecretsAPIService) CreateSecretVersionExecute(r ApiCreateSecretVersionRequest) (*EsvSecretVersionResponse, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvSecretVersionResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalCreateSecretVersionExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SecretsAPIService) internalCreateSecretVersionExecute(r ApiCreateSecretVersionRequest) (*EsvSecretVersionResponse, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -651,6 +699,22 @@ func (a *SecretsAPIService) DeleteSecret(ctx context.Context, secretId string) A
 //	@return EsvSecretResponse
 func (a *SecretsAPIService) DeleteSecretExecute(r ApiDeleteSecretRequest) (*EsvSecretResponse, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvSecretResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalDeleteSecretExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SecretsAPIService) internalDeleteSecretExecute(r ApiDeleteSecretRequest) (*EsvSecretResponse, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -784,6 +848,22 @@ func (a *SecretsAPIService) DeleteSecretVersion(ctx context.Context, secretId st
 //
 //	@return EsvSecretVersionResponse
 func (a *SecretsAPIService) DeleteSecretVersionExecute(r ApiDeleteSecretVersionRequest) (*EsvSecretVersionResponse, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvSecretVersionResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalDeleteSecretVersionExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SecretsAPIService) internalDeleteSecretVersionExecute(r ApiDeleteSecretVersionRequest) (*EsvSecretVersionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -944,6 +1024,22 @@ func (a *SecretsAPIService) GetAllSecrets(ctx context.Context) ApiGetAllSecretsR
 //	@return EsvSecretsListResponse
 func (a *SecretsAPIService) GetAllSecretsExecute(r ApiGetAllSecretsRequest) (*EsvSecretsListResponse, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvSecretsListResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetAllSecretsExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SecretsAPIService) internalGetAllSecretsExecute(r ApiGetAllSecretsRequest) (*EsvSecretsListResponse, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -1100,6 +1196,22 @@ func (a *SecretsAPIService) GetSecret(ctx context.Context, secretId string) ApiG
 //	@return EsvSecretResponse
 func (a *SecretsAPIService) GetSecretExecute(r ApiGetSecretRequest) (*EsvSecretResponse, *http.Response, error) {
 	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvSecretResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetSecretExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SecretsAPIService) internalGetSecretExecute(r ApiGetSecretRequest) (*EsvSecretResponse, *http.Response, error) {
+	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
@@ -1235,6 +1347,22 @@ func (a *SecretsAPIService) GetSecretVersion(ctx context.Context, secretId strin
 //
 //	@return EsvSecretVersionResponse
 func (a *SecretsAPIService) GetSecretVersionExecute(r ApiGetSecretVersionRequest) (*EsvSecretVersionResponse, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EsvSecretVersionResponse
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetSecretVersionExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *SecretsAPIService) internalGetSecretVersionExecute(r ApiGetSecretVersionRequest) (*EsvSecretVersionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
