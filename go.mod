@@ -1,4 +1,4 @@
-module github.com/pingidentity/aic-temp-go-client
+module github.com/pingidentity/identitycloud-go-client
 
 go 1.18
 
