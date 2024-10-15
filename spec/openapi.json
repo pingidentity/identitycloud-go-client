@@ -6452,6 +6452,12 @@
           }
         },
         "type": "oauth2"
+      },
+      "bearer": {
+        "bearerFormat": "JWT",
+        "description": "OAuth bearer token (see documentation)",
+        "scheme": "bearer",
+        "type": "http"
       }
     },
     "schemas": {

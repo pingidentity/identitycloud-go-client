@@ -6623,3 +6623,8 @@ components:
             fr:idm:*: Grants full ESV access if user has openidm-admin role
           tokenUrl: https://example.com/oauth/token
       type: oauth2
+    bearer:
+      bearerFormat: JWT
+      description: OAuth bearer token (see documentation)
+      scheme: bearer
+      type: http
