@@ -89,9 +89,11 @@ func testForRetryable(r *http.Response, err error, currentBackoff time.Duration)
 			backoff = currentBackoff * 2
 		}
 
+		//TODO determine if any other status codes are appropriate for retry
 		retryAbleCodes := []int{
 			429,
 			500,
+			501,
 			502,
 			503,
 			504,
