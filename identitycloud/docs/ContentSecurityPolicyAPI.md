@@ -135,7 +135,7 @@ Other parameters are passed through a pointer to a apiGetReportOnlyContentSecuri
 
 ## SetEnforcedContentSecurityPolicy
 
-> ContentSecurityPolicy SetEnforcedContentSecurityPolicy(ctx).ContentSecurityPolicy(contentSecurityPolicy).Execute()
+> ContentSecurityPolicy SetEnforcedContentSecurityPolicy(ctx).Body(body).Execute()
 
 Set enforced content security policy
 
@@ -154,11 +154,11 @@ import (
 )
 
 func main() {
-    contentSecurityPolicy := *openapiclient.NewContentSecurityPolicy() // ContentSecurityPolicy | Enforced content security policy to apply to the tenant
+    body := *openapiclient.NewContentSecurityPolicy() // ContentSecurityPolicy | Enforced content security policy to apply to the tenant
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContentSecurityPolicyAPI.SetEnforcedContentSecurityPolicy(context.Background()).ContentSecurityPolicy(contentSecurityPolicy).Execute()
+    resp, r, err := apiClient.ContentSecurityPolicyAPI.SetEnforcedContentSecurityPolicy(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContentSecurityPolicyAPI.SetEnforcedContentSecurityPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -179,7 +179,7 @@ Other parameters are passed through a pointer to a apiSetEnforcedContentSecurity
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contentSecurityPolicy** | [**ContentSecurityPolicy**](ContentSecurityPolicy.md) | Enforced content security policy to apply to the tenant | 
+ **body** | [**ContentSecurityPolicy**](ContentSecurityPolicy.md) | Enforced content security policy to apply to the tenant | 
 
 ### Return type
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ## SetReportOnlyContentSecurityPolicy
 
-> ContentSecurityPolicy SetReportOnlyContentSecurityPolicy(ctx).ContentSecurityPolicy(contentSecurityPolicy).Execute()
+> ContentSecurityPolicy SetReportOnlyContentSecurityPolicy(ctx).Body(body).Execute()
 
 Set report-only content security policy
 
@@ -220,11 +220,11 @@ import (
 )
 
 func main() {
-    contentSecurityPolicy := *openapiclient.NewContentSecurityPolicy() // ContentSecurityPolicy | Enforced content security policy to apply to the tenant
+    body := *openapiclient.NewContentSecurityPolicy() // ContentSecurityPolicy | Enforced content security policy to apply to the tenant
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContentSecurityPolicyAPI.SetReportOnlyContentSecurityPolicy(context.Background()).ContentSecurityPolicy(contentSecurityPolicy).Execute()
+    resp, r, err := apiClient.ContentSecurityPolicyAPI.SetReportOnlyContentSecurityPolicy(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContentSecurityPolicyAPI.SetReportOnlyContentSecurityPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,7 +245,7 @@ Other parameters are passed through a pointer to a apiSetReportOnlyContentSecuri
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contentSecurityPolicy** | [**ContentSecurityPolicy**](ContentSecurityPolicy.md) | Enforced content security policy to apply to the tenant | 
+ **body** | [**ContentSecurityPolicy**](ContentSecurityPolicy.md) | Enforced content security policy to apply to the tenant | 
 
 ### Return type
 

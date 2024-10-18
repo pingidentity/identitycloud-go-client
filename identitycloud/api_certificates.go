@@ -23,14 +23,14 @@ import (
 type CertificatesAPIService service
 
 type ApiCreateCertificateRequest struct {
-	ctx                      context.Context
-	ApiService               *CertificatesAPIService
-	createCertificateRequest *CreateCertificateRequest
+	ctx        context.Context
+	ApiService *CertificatesAPIService
+	body       *CreateCertificateRequest
 }
 
 // JSON body of the new certificate
-func (r ApiCreateCertificateRequest) CreateCertificateRequest(createCertificateRequest CreateCertificateRequest) ApiCreateCertificateRequest {
-	r.createCertificateRequest = &createCertificateRequest
+func (r ApiCreateCertificateRequest) Body(body CreateCertificateRequest) ApiCreateCertificateRequest {
+	r.body = &body
 	return r
 }
 
@@ -90,8 +90,8 @@ func (a *CertificatesAPIService) internalCreateCertificateExecute(r ApiCreateCer
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createCertificateRequest == nil {
-		return localVarReturnValue, nil, reportError("createCertificateRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -112,7 +112,7 @@ func (a *CertificatesAPIService) internalCreateCertificateExecute(r ApiCreateCer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createCertificateRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -624,15 +624,15 @@ func (a *CertificatesAPIService) GetCertificatesExecute(r ApiGetCertificatesRequ
 }
 
 type ApiUpdateCertificateByIDRequest struct {
-	ctx                      context.Context
-	ApiService               *CertificatesAPIService
-	id                       string
-	updateCertificateRequest *UpdateCertificateRequest
+	ctx        context.Context
+	ApiService *CertificatesAPIService
+	id         string
+	body       *UpdateCertificateRequest
 }
 
 // JSON body of the updated certificate
-func (r ApiUpdateCertificateByIDRequest) UpdateCertificateRequest(updateCertificateRequest UpdateCertificateRequest) ApiUpdateCertificateByIDRequest {
-	r.updateCertificateRequest = &updateCertificateRequest
+func (r ApiUpdateCertificateByIDRequest) Body(body UpdateCertificateRequest) ApiUpdateCertificateByIDRequest {
+	r.body = &body
 	return r
 }
 
@@ -695,8 +695,8 @@ func (a *CertificatesAPIService) internalUpdateCertificateByIDExecute(r ApiUpdat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateCertificateRequest == nil {
-		return localVarReturnValue, nil, reportError("updateCertificateRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -717,7 +717,7 @@ func (a *CertificatesAPIService) internalUpdateCertificateByIDExecute(r ApiUpdat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateCertificateRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
