@@ -23,14 +23,14 @@ import (
 type CSRsAPIService service
 
 type ApiCreateCertificateSigningRequestRequest struct {
-	ctx                                    context.Context
-	ApiService                             *CSRsAPIService
-	createCertificateSigningRequestRequest *CreateCertificateSigningRequestRequest
+	ctx        context.Context
+	ApiService *CSRsAPIService
+	body       *CreateCertificateSigningRequestRequest
 }
 
 // JSON body of the new certificate signing request
-func (r ApiCreateCertificateSigningRequestRequest) CreateCertificateSigningRequestRequest(createCertificateSigningRequestRequest CreateCertificateSigningRequestRequest) ApiCreateCertificateSigningRequestRequest {
-	r.createCertificateSigningRequestRequest = &createCertificateSigningRequestRequest
+func (r ApiCreateCertificateSigningRequestRequest) Body(body CreateCertificateSigningRequestRequest) ApiCreateCertificateSigningRequestRequest {
+	r.body = &body
 	return r
 }
 
@@ -90,8 +90,8 @@ func (a *CSRsAPIService) internalCreateCertificateSigningRequestExecute(r ApiCre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createCertificateSigningRequestRequest == nil {
-		return localVarReturnValue, nil, reportError("createCertificateSigningRequestRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -112,7 +112,7 @@ func (a *CSRsAPIService) internalCreateCertificateSigningRequestExecute(r ApiCre
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createCertificateSigningRequestRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -613,15 +613,15 @@ func (a *CSRsAPIService) GetCertificateSigningRequestsExecute(r ApiGetCertificat
 }
 
 type ApiUpdateCertificateSigningRequestByIdRequest struct {
-	ctx                                    context.Context
-	ApiService                             *CSRsAPIService
-	id                                     string
-	updateCertificateSigningRequestRequest *UpdateCertificateSigningRequestRequest
+	ctx        context.Context
+	ApiService *CSRsAPIService
+	id         string
+	body       *UpdateCertificateSigningRequestRequest
 }
 
 // JSON body of the new certificate signing request
-func (r ApiUpdateCertificateSigningRequestByIdRequest) UpdateCertificateSigningRequestRequest(updateCertificateSigningRequestRequest UpdateCertificateSigningRequestRequest) ApiUpdateCertificateSigningRequestByIdRequest {
-	r.updateCertificateSigningRequestRequest = &updateCertificateSigningRequestRequest
+func (r ApiUpdateCertificateSigningRequestByIdRequest) Body(body UpdateCertificateSigningRequestRequest) ApiUpdateCertificateSigningRequestByIdRequest {
+	r.body = &body
 	return r
 }
 
@@ -684,8 +684,8 @@ func (a *CSRsAPIService) internalUpdateCertificateSigningRequestByIdExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateCertificateSigningRequestRequest == nil {
-		return localVarReturnValue, nil, reportError("updateCertificateSigningRequestRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -706,7 +706,7 @@ func (a *CSRsAPIService) internalUpdateCertificateSigningRequestByIdExecute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateCertificateSigningRequestRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

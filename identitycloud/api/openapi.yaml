@@ -287,6 +287,7 @@ paths:
       summary: Create certificate
       tags:
       - Certificates
+      x-codegen-request-body-name: body
   /environment/certificates/{id}:
     delete:
       description: Deletes a certificate installed on the tenant. This certificate
@@ -670,6 +671,7 @@ paths:
       summary: Update certificate by ID
       tags:
       - Certificates
+      x-codegen-request-body-name: body
   /environment/content-security-policy/enforced:
     get:
       description: Returns current enforced content security policy
@@ -870,6 +872,7 @@ paths:
       summary: Set enforced content security policy
       tags:
       - Content Security Policy
+      x-codegen-request-body-name: body
   /environment/content-security-policy/report-only:
     get:
       description: Returns current report-only content security policy
@@ -1070,6 +1073,7 @@ paths:
       summary: Set report-only content security policy
       tags:
       - Content Security Policy
+      x-codegen-request-body-name: body
   /environment/cookie-domains:
     get:
       description: Returns current cookie domains
@@ -1298,6 +1302,7 @@ paths:
       summary: Set cookie domains
       tags:
       - Cookie Domains
+      x-codegen-request-body-name: body
   /environment/count:
     get:
       description: Get count of ESV secrets and variables in the environment.
@@ -1572,6 +1577,7 @@ paths:
       summary: Create CSR
       tags:
       - CSRs
+      x-codegen-request-body-name: body
   /environment/csrs/{id}:
     delete:
       description: Deletes a CSR created in the tenant.
@@ -1936,6 +1942,7 @@ paths:
       summary: Update CSR by ID
       tags:
       - CSRs
+      x-codegen-request-body-name: body
   /environment/custom-domains:
     post:
       description: Verify a CNAME
@@ -2061,6 +2068,7 @@ paths:
       summary: Verify a CNAME
       tags:
       - Custom Domains
+      x-codegen-request-body-name: body
   /environment/custom-domains/{realm}:
     get:
       description: Returns current custom domains
@@ -2294,6 +2302,7 @@ paths:
       summary: Set custom domains
       tags:
       - Custom Domains
+      x-codegen-request-body-name: body
   /environment/federation/enforcement:
     get:
       description: Returns current federation enforcement settings
@@ -2467,6 +2476,7 @@ paths:
       summary: Set enforcement of federation
       tags:
       - Federation Enforcement
+      x-codegen-request-body-name: body
   /environment/promotion/lock:
     post:
       description: Starts the lock process on the lower and upper environments
@@ -2926,6 +2936,7 @@ paths:
       summary: Run a promotion
       tags:
       - Promotion
+      x-codegen-request-body-name: body
   /environment/promotion/report:
     get:
       description: This will return the contents of the last run config promotion
@@ -3425,6 +3436,7 @@ paths:
       summary: Rollback a promotion
       tags:
       - Promotion
+      x-codegen-request-body-name: body
   /environment/release:
     get:
       description: Get release information
@@ -3800,6 +3812,7 @@ paths:
       summary: Set a secret description
       tags:
       - Secrets
+      x-codegen-request-body-name: body
     put:
       description: Create a secret and its first secret version.
       operationId: createSecret
@@ -3867,6 +3880,7 @@ paths:
       summary: Create a secret
       tags:
       - Secrets
+      x-codegen-request-body-name: body
   /environment/secrets/{secretId}/versions:
     get:
       description: |
@@ -4007,6 +4021,7 @@ paths:
       summary: Create a new version of a secret
       tags:
       - Secrets
+      x-codegen-request-body-name: body
   /environment/secrets/{secretId}/versions/{versionId}:
     delete:
       operationId: deleteSecretVersion
@@ -4234,6 +4249,7 @@ paths:
       summary: Update the status of a version of a secret
       tags:
       - Secrets
+      x-codegen-request-body-name: body
   /environment/sso-cookie:
     get:
       description: Returns current SSO cookie configuration
@@ -4541,6 +4557,7 @@ paths:
       summary: Set SSO cookie configuration
       tags:
       - SSO Cookie
+      x-codegen-request-body-name: body
   /environment/startup:
     get:
       description: Get restart status indicating whether any upgrade or rollout restart
@@ -4942,6 +4959,7 @@ paths:
       summary: Set a variable description
       tags:
       - Variables
+      x-codegen-request-body-name: body
     put:
       description: |
         Create or update a variable using a predefined name. Once created, a variable name cannot be changed.
@@ -5010,6 +5028,7 @@ paths:
       summary: Create or update a variable
       tags:
       - Variables
+      x-codegen-request-body-name: body
 components:
   parameters:
     PageCookie:

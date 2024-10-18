@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateCertificateSigningRequest
 
-> CertificateSigningRequest CreateCertificateSigningRequest(ctx).CreateCertificateSigningRequestRequest(createCertificateSigningRequestRequest).Execute()
+> CertificateSigningRequest CreateCertificateSigningRequest(ctx).Body(body).Execute()
 
 Create CSR
 
@@ -33,11 +33,11 @@ import (
 )
 
 func main() {
-    createCertificateSigningRequestRequest := *openapiclient.NewCreateCertificateSigningRequestRequest() // CreateCertificateSigningRequestRequest | JSON body of the new certificate signing request
+    body := *openapiclient.NewCreateCertificateSigningRequestRequest() // CreateCertificateSigningRequestRequest | JSON body of the new certificate signing request
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CSRsAPI.CreateCertificateSigningRequest(context.Background()).CreateCertificateSigningRequestRequest(createCertificateSigningRequestRequest).Execute()
+    resp, r, err := apiClient.CSRsAPI.CreateCertificateSigningRequest(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CSRsAPI.CreateCertificateSigningRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,7 +58,7 @@ Other parameters are passed through a pointer to a apiCreateCertificateSigningRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCertificateSigningRequestRequest** | [**CreateCertificateSigningRequestRequest**](CreateCertificateSigningRequestRequest.md) | JSON body of the new certificate signing request | 
+ **body** | [**CreateCertificateSigningRequestRequest**](CreateCertificateSigningRequestRequest.md) | JSON body of the new certificate signing request | 
 
 ### Return type
 
@@ -279,7 +279,7 @@ Other parameters are passed through a pointer to a apiGetCertificateSigningReque
 
 ## UpdateCertificateSigningRequestById
 
-> CertificateSigningRequest UpdateCertificateSigningRequestById(ctx, id).UpdateCertificateSigningRequestRequest(updateCertificateSigningRequestRequest).Execute()
+> CertificateSigningRequest UpdateCertificateSigningRequestById(ctx, id).Body(body).Execute()
 
 Update CSR by ID
 
@@ -299,11 +299,11 @@ import (
 
 func main() {
     id := "id_example" // string | ID of the certificateSigningRequest
-    updateCertificateSigningRequestRequest := *openapiclient.NewUpdateCertificateSigningRequestRequest("Certificate_example") // UpdateCertificateSigningRequestRequest | JSON body of the new certificate signing request
+    body := *openapiclient.NewUpdateCertificateSigningRequestRequest("Certificate_example") // UpdateCertificateSigningRequestRequest | JSON body of the new certificate signing request
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CSRsAPI.UpdateCertificateSigningRequestById(context.Background(), id).UpdateCertificateSigningRequestRequest(updateCertificateSigningRequestRequest).Execute()
+    resp, r, err := apiClient.CSRsAPI.UpdateCertificateSigningRequestById(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CSRsAPI.UpdateCertificateSigningRequestById``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,7 +329,7 @@ Other parameters are passed through a pointer to a apiUpdateCertificateSigningRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateCertificateSigningRequestRequest** | [**UpdateCertificateSigningRequestRequest**](UpdateCertificateSigningRequestRequest.md) | JSON body of the new certificate signing request | 
+ **body** | [**UpdateCertificateSigningRequestRequest**](UpdateCertificateSigningRequestRequest.md) | JSON body of the new certificate signing request | 
 
 ### Return type
 

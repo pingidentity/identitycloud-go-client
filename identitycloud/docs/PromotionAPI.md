@@ -556,7 +556,7 @@ Name | Type | Description  | Notes
 
 ## Rollback
 
-> RollbackStart Rollback(ctx).AcceptAPIVersion(acceptAPIVersion).RollbackRequest(rollbackRequest).Execute()
+> RollbackStart Rollback(ctx).AcceptAPIVersion(acceptAPIVersion).Body(body).Execute()
 
 Rollback a promotion
 
@@ -576,11 +576,11 @@ import (
 
 func main() {
     acceptAPIVersion := "acceptAPIVersion_example" // string | protocol=1.0,resource=1.0
-    rollbackRequest := *openapiclient.NewRollbackRequest() // RollbackRequest | A request body with info required to initiate a rollback
+    body := *openapiclient.NewRollbackRequest() // RollbackRequest | A request body with info required to initiate a rollback
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PromotionAPI.Rollback(context.Background()).AcceptAPIVersion(acceptAPIVersion).RollbackRequest(rollbackRequest).Execute()
+    resp, r, err := apiClient.PromotionAPI.Rollback(context.Background()).AcceptAPIVersion(acceptAPIVersion).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PromotionAPI.Rollback``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -602,7 +602,7 @@ Other parameters are passed through a pointer to a apiRollbackRequest struct via
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **acceptAPIVersion** | **string** | protocol&#x3D;1.0,resource&#x3D;1.0 | 
- **rollbackRequest** | [**RollbackRequest**](RollbackRequest.md) | A request body with info required to initiate a rollback | 
+ **body** | [**RollbackRequest**](RollbackRequest.md) | A request body with info required to initiate a rollback | 
 
 ### Return type
 
@@ -624,7 +624,7 @@ Name | Type | Description  | Notes
 
 ## Start
 
-> PromotionStart Start(ctx).AcceptAPIVersion(acceptAPIVersion).PromotionRequest(promotionRequest).Execute()
+> PromotionStart Start(ctx).AcceptAPIVersion(acceptAPIVersion).Body(body).Execute()
 
 Run a promotion
 
@@ -644,11 +644,11 @@ import (
 
 func main() {
     acceptAPIVersion := "acceptAPIVersion_example" // string | protocol=1.0,resource=1.0
-    promotionRequest := *openapiclient.NewPromotionRequest(false) // PromotionRequest | A request body with info required to initiate a promotion
+    body := *openapiclient.NewPromotionRequest(false) // PromotionRequest | A request body with info required to initiate a promotion
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PromotionAPI.Start(context.Background()).AcceptAPIVersion(acceptAPIVersion).PromotionRequest(promotionRequest).Execute()
+    resp, r, err := apiClient.PromotionAPI.Start(context.Background()).AcceptAPIVersion(acceptAPIVersion).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PromotionAPI.Start``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -670,7 +670,7 @@ Other parameters are passed through a pointer to a apiStartRequest struct via th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **acceptAPIVersion** | **string** | protocol&#x3D;1.0,resource&#x3D;1.0 | 
- **promotionRequest** | [**PromotionRequest**](PromotionRequest.md) | A request body with info required to initiate a promotion | 
+ **body** | [**PromotionRequest**](PromotionRequest.md) | A request body with info required to initiate a promotion | 
 
 ### Return type
 

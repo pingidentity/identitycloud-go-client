@@ -23,12 +23,12 @@ import (
 type VariablesAPIService service
 
 type ApiActionVariableRequest struct {
-	ctx                      context.Context
-	ApiService               *VariablesAPIService
-	variableId               string
-	action                   *string
-	esvSetDescriptionRequest *EsvSetDescriptionRequest
-	acceptAPIVersion         *string
+	ctx              context.Context
+	ApiService       *VariablesAPIService
+	variableId       string
+	action           *string
+	body             *EsvSetDescriptionRequest
+	acceptAPIVersion *string
 }
 
 func (r ApiActionVariableRequest) Action(action string) ApiActionVariableRequest {
@@ -37,8 +37,8 @@ func (r ApiActionVariableRequest) Action(action string) ApiActionVariableRequest
 }
 
 // The description of this variable
-func (r ApiActionVariableRequest) EsvSetDescriptionRequest(esvSetDescriptionRequest EsvSetDescriptionRequest) ApiActionVariableRequest {
-	r.esvSetDescriptionRequest = &esvSetDescriptionRequest
+func (r ApiActionVariableRequest) Body(body EsvSetDescriptionRequest) ApiActionVariableRequest {
+	r.body = &body
 	return r
 }
 
@@ -89,8 +89,8 @@ func (a *VariablesAPIService) ActionVariableExecute(r ApiActionVariableRequest) 
 	if r.action == nil {
 		return nil, reportError("action is required and must be specified")
 	}
-	if r.esvSetDescriptionRequest == nil {
-		return nil, reportError("esvSetDescriptionRequest is required and must be specified")
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "_action", r.action, "")
@@ -115,7 +115,7 @@ func (a *VariablesAPIService) ActionVariableExecute(r ApiActionVariableRequest) 
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-API-Version", r.acceptAPIVersion, "")
 	}
 	// body params
-	localVarPostBody = r.esvSetDescriptionRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -164,16 +164,16 @@ func (a *VariablesAPIService) ActionVariableExecute(r ApiActionVariableRequest) 
 }
 
 type ApiCreateVariablesRequest struct {
-	ctx                            context.Context
-	ApiService                     *VariablesAPIService
-	variableId                     string
-	esvVariableCreateUpdateRequest *EsvVariableCreateUpdateRequest
-	acceptAPIVersion               *string
+	ctx              context.Context
+	ApiService       *VariablesAPIService
+	variableId       string
+	body             *EsvVariableCreateUpdateRequest
+	acceptAPIVersion *string
 }
 
 // JSON body of the new variable
-func (r ApiCreateVariablesRequest) EsvVariableCreateUpdateRequest(esvVariableCreateUpdateRequest EsvVariableCreateUpdateRequest) ApiCreateVariablesRequest {
-	r.esvVariableCreateUpdateRequest = &esvVariableCreateUpdateRequest
+func (r ApiCreateVariablesRequest) Body(body EsvVariableCreateUpdateRequest) ApiCreateVariablesRequest {
+	r.body = &body
 	return r
 }
 
@@ -242,8 +242,8 @@ func (a *VariablesAPIService) internalCreateVariablesExecute(r ApiCreateVariable
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.esvVariableCreateUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("esvVariableCreateUpdateRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -267,7 +267,7 @@ func (a *VariablesAPIService) internalCreateVariablesExecute(r ApiCreateVariable
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-API-Version", r.acceptAPIVersion, "")
 	}
 	// body params
-	localVarPostBody = r.esvVariableCreateUpdateRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

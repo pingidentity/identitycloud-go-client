@@ -23,11 +23,11 @@ import (
 type SecretsAPIService service
 
 type ApiActionSecretRequest struct {
-	ctx                      context.Context
-	ApiService               *SecretsAPIService
-	secretId                 string
-	action                   *string
-	esvSetDescriptionRequest *EsvSetDescriptionRequest
+	ctx        context.Context
+	ApiService *SecretsAPIService
+	secretId   string
+	action     *string
+	body       *EsvSetDescriptionRequest
 }
 
 func (r ApiActionSecretRequest) Action(action string) ApiActionSecretRequest {
@@ -36,8 +36,8 @@ func (r ApiActionSecretRequest) Action(action string) ApiActionSecretRequest {
 }
 
 // The description of this secret
-func (r ApiActionSecretRequest) EsvSetDescriptionRequest(esvSetDescriptionRequest EsvSetDescriptionRequest) ApiActionSecretRequest {
-	r.esvSetDescriptionRequest = &esvSetDescriptionRequest
+func (r ApiActionSecretRequest) Body(body EsvSetDescriptionRequest) ApiActionSecretRequest {
+	r.body = &body
 	return r
 }
 
@@ -82,8 +82,8 @@ func (a *SecretsAPIService) ActionSecretExecute(r ApiActionSecretRequest) (*http
 	if r.action == nil {
 		return nil, reportError("action is required and must be specified")
 	}
-	if r.esvSetDescriptionRequest == nil {
-		return nil, reportError("esvSetDescriptionRequest is required and must be specified")
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "_action", r.action, "")
@@ -105,7 +105,7 @@ func (a *SecretsAPIService) ActionSecretExecute(r ApiActionSecretRequest) (*http
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.esvSetDescriptionRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -154,13 +154,13 @@ func (a *SecretsAPIService) ActionSecretExecute(r ApiActionSecretRequest) (*http
 }
 
 type ApiChangeSecretVersionRequest struct {
-	ctx                           context.Context
-	ApiService                    *SecretsAPIService
-	action                        *string
-	secretId                      string
-	versionId                     string
-	esvSecretVersionStatusRequest *EsvSecretVersionStatusRequest
-	acceptAPIVersion              *string
+	ctx              context.Context
+	ApiService       *SecretsAPIService
+	action           *string
+	secretId         string
+	versionId        string
+	body             *EsvSecretVersionStatusRequest
+	acceptAPIVersion *string
 }
 
 // Can only be changestatus
@@ -170,8 +170,8 @@ func (r ApiChangeSecretVersionRequest) Action(action string) ApiChangeSecretVers
 }
 
 // JSON body of the new status of the secret version
-func (r ApiChangeSecretVersionRequest) EsvSecretVersionStatusRequest(esvSecretVersionStatusRequest EsvSecretVersionStatusRequest) ApiChangeSecretVersionRequest {
-	r.esvSecretVersionStatusRequest = &esvSecretVersionStatusRequest
+func (r ApiChangeSecretVersionRequest) Body(body EsvSecretVersionStatusRequest) ApiChangeSecretVersionRequest {
+	r.body = &body
 	return r
 }
 
@@ -246,8 +246,8 @@ func (a *SecretsAPIService) internalChangeSecretVersionExecute(r ApiChangeSecret
 	if r.action == nil {
 		return localVarReturnValue, nil, reportError("action is required and must be specified")
 	}
-	if r.esvSecretVersionStatusRequest == nil {
-		return localVarReturnValue, nil, reportError("esvSecretVersionStatusRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "_action", r.action, "")
@@ -272,7 +272,7 @@ func (a *SecretsAPIService) internalChangeSecretVersionExecute(r ApiChangeSecret
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-API-Version", r.acceptAPIVersion, "")
 	}
 	// body params
-	localVarPostBody = r.esvSecretVersionStatusRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -330,16 +330,16 @@ func (a *SecretsAPIService) internalChangeSecretVersionExecute(r ApiChangeSecret
 }
 
 type ApiCreateSecretRequest struct {
-	ctx                    context.Context
-	ApiService             *SecretsAPIService
-	secretId               string
-	esvSecretCreateRequest *EsvSecretCreateRequest
-	acceptAPIVersion       *string
+	ctx              context.Context
+	ApiService       *SecretsAPIService
+	secretId         string
+	body             *EsvSecretCreateRequest
+	acceptAPIVersion *string
 }
 
 // JSON body of the new secret
-func (r ApiCreateSecretRequest) EsvSecretCreateRequest(esvSecretCreateRequest EsvSecretCreateRequest) ApiCreateSecretRequest {
-	r.esvSecretCreateRequest = &esvSecretCreateRequest
+func (r ApiCreateSecretRequest) Body(body EsvSecretCreateRequest) ApiCreateSecretRequest {
+	r.body = &body
 	return r
 }
 
@@ -408,8 +408,8 @@ func (a *SecretsAPIService) internalCreateSecretExecute(r ApiCreateSecretRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.esvSecretCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("esvSecretCreateRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -433,7 +433,7 @@ func (a *SecretsAPIService) internalCreateSecretExecute(r ApiCreateSecretRequest
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-API-Version", r.acceptAPIVersion, "")
 	}
 	// body params
-	localVarPostBody = r.esvSecretCreateRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -491,12 +491,12 @@ func (a *SecretsAPIService) internalCreateSecretExecute(r ApiCreateSecretRequest
 }
 
 type ApiCreateSecretVersionRequest struct {
-	ctx                           context.Context
-	ApiService                    *SecretsAPIService
-	action                        *string
-	secretId                      string
-	esvSecretVersionCreateRequest *EsvSecretVersionCreateRequest
-	acceptAPIVersion              *string
+	ctx              context.Context
+	ApiService       *SecretsAPIService
+	action           *string
+	secretId         string
+	body             *EsvSecretVersionCreateRequest
+	acceptAPIVersion *string
 }
 
 // Can only be create
@@ -506,8 +506,8 @@ func (r ApiCreateSecretVersionRequest) Action(action string) ApiCreateSecretVers
 }
 
 // JSON body of the new secret version
-func (r ApiCreateSecretVersionRequest) EsvSecretVersionCreateRequest(esvSecretVersionCreateRequest EsvSecretVersionCreateRequest) ApiCreateSecretVersionRequest {
-	r.esvSecretVersionCreateRequest = &esvSecretVersionCreateRequest
+func (r ApiCreateSecretVersionRequest) Body(body EsvSecretVersionCreateRequest) ApiCreateSecretVersionRequest {
+	r.body = &body
 	return r
 }
 
@@ -577,8 +577,8 @@ func (a *SecretsAPIService) internalCreateSecretVersionExecute(r ApiCreateSecret
 	if r.action == nil {
 		return localVarReturnValue, nil, reportError("action is required and must be specified")
 	}
-	if r.esvSecretVersionCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("esvSecretVersionCreateRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "_action", r.action, "")
@@ -603,7 +603,7 @@ func (a *SecretsAPIService) internalCreateSecretVersionExecute(r ApiCreateSecret
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-API-Version", r.acceptAPIVersion, "")
 	}
 	// body params
-	localVarPostBody = r.esvSecretVersionCreateRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

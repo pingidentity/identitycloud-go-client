@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## SetCustomDomains
 
-> CustomDomains SetCustomDomains(ctx, realm).CustomDomains(customDomains).Execute()
+> CustomDomains SetCustomDomains(ctx, realm).Body(body).Execute()
 
 Set custom domains
 
@@ -102,11 +102,11 @@ import (
 
 func main() {
     realm := "realm_example" // string | Realm for the domain
-    customDomains := *openapiclient.NewCustomDomains() // CustomDomains | Custom domains
+    body := *openapiclient.NewCustomDomains() // CustomDomains | Custom domains
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomDomainsAPI.SetCustomDomains(context.Background(), realm).CustomDomains(customDomains).Execute()
+    resp, r, err := apiClient.CustomDomainsAPI.SetCustomDomains(context.Background(), realm).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainsAPI.SetCustomDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,7 +132,7 @@ Other parameters are passed through a pointer to a apiSetCustomDomainsRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **customDomains** | [**CustomDomains**](CustomDomains.md) | Custom domains | 
+ **body** | [**CustomDomains**](CustomDomains.md) | Custom domains | 
 
 ### Return type
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## VerifyCustomDomains
 
-> VerifyCustomDomains(ctx).Action(action).CName(cName).Execute()
+> VerifyCustomDomains(ctx).Action(action).Body(body).Execute()
 
 Verify a CNAME
 
@@ -174,11 +174,11 @@ import (
 
 func main() {
     action := "action_example" // string | Requested action type
-    cName := *openapiclient.NewCName("Name_example") // CName | Custom domain
+    body := *openapiclient.NewCName("Name_example") // CName | Custom domain
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CustomDomainsAPI.VerifyCustomDomains(context.Background()).Action(action).CName(cName).Execute()
+    r, err := apiClient.CustomDomainsAPI.VerifyCustomDomains(context.Background()).Action(action).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainsAPI.VerifyCustomDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -198,7 +198,7 @@ Other parameters are passed through a pointer to a apiVerifyCustomDomainsRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **action** | **string** | Requested action type | 
- **cName** | [**CName**](CName.md) | Custom domain | 
+ **body** | [**CName**](CName.md) | Custom domain | 
 
 ### Return type
 

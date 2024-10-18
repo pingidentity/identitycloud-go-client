@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## ActionSecret
 
-> ActionSecret(ctx, secretId).Action(action).EsvSetDescriptionRequest(esvSetDescriptionRequest).Execute()
+> ActionSecret(ctx, secretId).Action(action).Body(body).Execute()
 
 Set a secret description
 
@@ -38,11 +38,11 @@ import (
 func main() {
     secretId := "secretId_example" // string | ID of the secret
     action := "action_example" // string | 
-    esvSetDescriptionRequest := *openapiclient.NewEsvSetDescriptionRequest("My secret") // EsvSetDescriptionRequest | The description of this secret
+    body := *openapiclient.NewEsvSetDescriptionRequest("My secret") // EsvSetDescriptionRequest | The description of this secret
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SecretsAPI.ActionSecret(context.Background(), secretId).Action(action).EsvSetDescriptionRequest(esvSetDescriptionRequest).Execute()
+    r, err := apiClient.SecretsAPI.ActionSecret(context.Background(), secretId).Action(action).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ActionSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **action** | **string** |  | 
- **esvSetDescriptionRequest** | [**EsvSetDescriptionRequest**](EsvSetDescriptionRequest.md) | The description of this secret | 
+ **body** | [**EsvSetDescriptionRequest**](EsvSetDescriptionRequest.md) | The description of this secret | 
 
 ### Return type
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## ChangeSecretVersion
 
-> EsvSecretVersionResponse ChangeSecretVersion(ctx, secretId, versionId).Action(action).EsvSecretVersionStatusRequest(esvSecretVersionStatusRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+> EsvSecretVersionResponse ChangeSecretVersion(ctx, secretId, versionId).Action(action).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
 
 Update the status of a version of a secret
 
@@ -111,12 +111,12 @@ func main() {
     action := "action_example" // string | Can only be changestatus
     secretId := "secretId_example" // string | ID of the secret
     versionId := "versionId_example" // string | ID of the secret version
-    esvSecretVersionStatusRequest := *openapiclient.NewEsvSecretVersionStatusRequest("DISABLED") // EsvSecretVersionStatusRequest | JSON body of the new status of the secret version
+    body := *openapiclient.NewEsvSecretVersionStatusRequest("DISABLED") // EsvSecretVersionStatusRequest | JSON body of the new status of the secret version
     acceptAPIVersion := "acceptAPIVersion_example" // string | resource=2.0 (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsAPI.ChangeSecretVersion(context.Background(), secretId, versionId).Action(action).EsvSecretVersionStatusRequest(esvSecretVersionStatusRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+    resp, r, err := apiClient.SecretsAPI.ChangeSecretVersion(context.Background(), secretId, versionId).Action(action).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ChangeSecretVersion``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
  **action** | **string** | Can only be changestatus | 
 
 
- **esvSecretVersionStatusRequest** | [**EsvSecretVersionStatusRequest**](EsvSecretVersionStatusRequest.md) | JSON body of the new status of the secret version | 
+ **body** | [**EsvSecretVersionStatusRequest**](EsvSecretVersionStatusRequest.md) | JSON body of the new status of the secret version | 
  **acceptAPIVersion** | **string** | resource&#x3D;2.0 | 
 
 ### Return type
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ## CreateSecret
 
-> EsvSecretResponse CreateSecret(ctx, secretId).EsvSecretCreateRequest(esvSecretCreateRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+> EsvSecretResponse CreateSecret(ctx, secretId).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
 
 Create a secret
 
@@ -188,12 +188,12 @@ import (
 
 func main() {
     secretId := "secretId_example" // string | ID of the secret
-    esvSecretCreateRequest := *openapiclient.NewEsvSecretCreateRequest("generic", false, string([B@5be067de)) // EsvSecretCreateRequest | JSON body of the new secret
+    body := *openapiclient.NewEsvSecretCreateRequest("generic", false, string([B@5be067de)) // EsvSecretCreateRequest | JSON body of the new secret
     acceptAPIVersion := "acceptAPIVersion_example" // string | resource=2.0 (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsAPI.CreateSecret(context.Background(), secretId).EsvSecretCreateRequest(esvSecretCreateRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+    resp, r, err := apiClient.SecretsAPI.CreateSecret(context.Background(), secretId).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.CreateSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -219,7 +219,7 @@ Other parameters are passed through a pointer to a apiCreateSecretRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **esvSecretCreateRequest** | [**EsvSecretCreateRequest**](EsvSecretCreateRequest.md) | JSON body of the new secret | 
+ **body** | [**EsvSecretCreateRequest**](EsvSecretCreateRequest.md) | JSON body of the new secret | 
  **acceptAPIVersion** | **string** | resource&#x3D;2.0 | 
 
 ### Return type
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ## CreateSecretVersion
 
-> EsvSecretVersionResponse CreateSecretVersion(ctx, secretId).Action(action).EsvSecretVersionCreateRequest(esvSecretVersionCreateRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+> EsvSecretVersionResponse CreateSecretVersion(ctx, secretId).Action(action).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
 
 Create a new version of a secret
 
@@ -261,12 +261,12 @@ import (
 func main() {
     action := "action_example" // string | Can only be create
     secretId := "secretId_example" // string | ID of the secret
-    esvSecretVersionCreateRequest := *openapiclient.NewEsvSecretVersionCreateRequest(string([B@7383eae2)) // EsvSecretVersionCreateRequest | JSON body of the new secret version
+    body := *openapiclient.NewEsvSecretVersionCreateRequest(string([B@7383eae2)) // EsvSecretVersionCreateRequest | JSON body of the new secret version
     acceptAPIVersion := "acceptAPIVersion_example" // string | resource=2.0 (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsAPI.CreateSecretVersion(context.Background(), secretId).Action(action).EsvSecretVersionCreateRequest(esvSecretVersionCreateRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+    resp, r, err := apiClient.SecretsAPI.CreateSecretVersion(context.Background(), secretId).Action(action).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.CreateSecretVersion``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **action** | **string** | Can only be create | 
 
- **esvSecretVersionCreateRequest** | [**EsvSecretVersionCreateRequest**](EsvSecretVersionCreateRequest.md) | JSON body of the new secret version | 
+ **body** | [**EsvSecretVersionCreateRequest**](EsvSecretVersionCreateRequest.md) | JSON body of the new secret version | 
  **acceptAPIVersion** | **string** | resource&#x3D;2.0 | 
 
 ### Return type

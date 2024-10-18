@@ -331,12 +331,12 @@ func (a *SSOCookieAPIService) internalResetSSOCookieExecute(r ApiResetSSOCookieR
 type ApiSetSSOCookieRequest struct {
 	ctx        context.Context
 	ApiService *SSOCookieAPIService
-	sSOCookie  *SSOCookie
+	body       *SSOCookie
 }
 
 // SSO cookie configuration to apply to the tenant
-func (r ApiSetSSOCookieRequest) SSOCookie(sSOCookie SSOCookie) ApiSetSSOCookieRequest {
-	r.sSOCookie = &sSOCookie
+func (r ApiSetSSOCookieRequest) Body(body SSOCookie) ApiSetSSOCookieRequest {
+	r.body = &body
 	return r
 }
 
@@ -396,8 +396,8 @@ func (a *SSOCookieAPIService) internalSetSSOCookieExecute(r ApiSetSSOCookieReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sSOCookie == nil {
-		return localVarReturnValue, nil, reportError("sSOCookie is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -418,7 +418,7 @@ func (a *SSOCookieAPIService) internalSetSSOCookieExecute(r ApiSetSSOCookieReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sSOCookie
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

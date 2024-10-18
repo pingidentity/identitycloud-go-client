@@ -181,14 +181,14 @@ func (a *CookieDomainsAPIService) internalGetCookieDomainsExecute(r ApiGetCookie
 }
 
 type ApiSetCookieDomainsRequest struct {
-	ctx           context.Context
-	ApiService    *CookieDomainsAPIService
-	cookieDomains *CookieDomains
+	ctx        context.Context
+	ApiService *CookieDomainsAPIService
+	body       *CookieDomains
 }
 
 // Cookie domains
-func (r ApiSetCookieDomainsRequest) CookieDomains(cookieDomains CookieDomains) ApiSetCookieDomainsRequest {
-	r.cookieDomains = &cookieDomains
+func (r ApiSetCookieDomainsRequest) Body(body CookieDomains) ApiSetCookieDomainsRequest {
+	r.body = &body
 	return r
 }
 
@@ -248,8 +248,8 @@ func (a *CookieDomainsAPIService) internalSetCookieDomainsExecute(r ApiSetCookie
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cookieDomains == nil {
-		return localVarReturnValue, nil, reportError("cookieDomains is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -270,7 +270,7 @@ func (a *CookieDomainsAPIService) internalSetCookieDomainsExecute(r ApiSetCookie
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cookieDomains
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

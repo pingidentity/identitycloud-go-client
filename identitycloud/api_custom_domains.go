@@ -175,15 +175,15 @@ func (a *CustomDomainsAPIService) internalGetCustomDomainsExecute(r ApiGetCustom
 }
 
 type ApiSetCustomDomainsRequest struct {
-	ctx           context.Context
-	ApiService    *CustomDomainsAPIService
-	realm         string
-	customDomains *CustomDomains
+	ctx        context.Context
+	ApiService *CustomDomainsAPIService
+	realm      string
+	body       *CustomDomains
 }
 
 // Custom domains
-func (r ApiSetCustomDomainsRequest) CustomDomains(customDomains CustomDomains) ApiSetCustomDomainsRequest {
-	r.customDomains = &customDomains
+func (r ApiSetCustomDomainsRequest) Body(body CustomDomains) ApiSetCustomDomainsRequest {
+	r.body = &body
 	return r
 }
 
@@ -246,8 +246,8 @@ func (a *CustomDomainsAPIService) internalSetCustomDomainsExecute(r ApiSetCustom
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.customDomains == nil {
-		return localVarReturnValue, nil, reportError("customDomains is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -268,7 +268,7 @@ func (a *CustomDomainsAPIService) internalSetCustomDomainsExecute(r ApiSetCustom
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.customDomains
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -353,7 +353,7 @@ type ApiVerifyCustomDomainsRequest struct {
 	ctx        context.Context
 	ApiService *CustomDomainsAPIService
 	action     *string
-	cName      *CName
+	body       *CName
 }
 
 // Requested action type
@@ -363,8 +363,8 @@ func (r ApiVerifyCustomDomainsRequest) Action(action string) ApiVerifyCustomDoma
 }
 
 // Custom domain
-func (r ApiVerifyCustomDomainsRequest) CName(cName CName) ApiVerifyCustomDomainsRequest {
-	r.cName = &cName
+func (r ApiVerifyCustomDomainsRequest) Body(body CName) ApiVerifyCustomDomainsRequest {
+	r.body = &body
 	return r
 }
 
@@ -408,8 +408,8 @@ func (a *CustomDomainsAPIService) VerifyCustomDomainsExecute(r ApiVerifyCustomDo
 	if r.action == nil {
 		return nil, reportError("action is required and must be specified")
 	}
-	if r.cName == nil {
-		return nil, reportError("cName is required and must be specified")
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "_action", r.action, "")
@@ -431,7 +431,7 @@ func (a *CustomDomainsAPIService) VerifyCustomDomainsExecute(r ApiVerifyCustomDo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cName
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateCertificate
 
-> Certificate CreateCertificate(ctx).CreateCertificateRequest(createCertificateRequest).Execute()
+> Certificate CreateCertificate(ctx).Body(body).Execute()
 
 Create certificate
 
@@ -33,11 +33,11 @@ import (
 )
 
 func main() {
-    createCertificateRequest := *openapiclient.NewCreateCertificateRequest("Certificate_example", "PrivateKey_example") // CreateCertificateRequest | JSON body of the new certificate
+    body := *openapiclient.NewCreateCertificateRequest("Certificate_example", "PrivateKey_example") // CreateCertificateRequest | JSON body of the new certificate
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificatesAPI.CreateCertificate(context.Background()).CreateCertificateRequest(createCertificateRequest).Execute()
+    resp, r, err := apiClient.CertificatesAPI.CreateCertificate(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificatesAPI.CreateCertificate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -58,7 +58,7 @@ Other parameters are passed through a pointer to a apiCreateCertificateRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCertificateRequest** | [**CreateCertificateRequest**](CreateCertificateRequest.md) | JSON body of the new certificate | 
+ **body** | [**CreateCertificateRequest**](CreateCertificateRequest.md) | JSON body of the new certificate | 
 
 ### Return type
 
@@ -279,7 +279,7 @@ Other parameters are passed through a pointer to a apiGetCertificatesRequest str
 
 ## UpdateCertificateByID
 
-> Certificate UpdateCertificateByID(ctx, id).UpdateCertificateRequest(updateCertificateRequest).Execute()
+> Certificate UpdateCertificateByID(ctx, id).Body(body).Execute()
 
 Update certificate by ID
 
@@ -299,11 +299,11 @@ import (
 
 func main() {
     id := "id_example" // string | ID of the certificate resource
-    updateCertificateRequest := *openapiclient.NewUpdateCertificateRequest() // UpdateCertificateRequest | JSON body of the updated certificate
+    body := *openapiclient.NewUpdateCertificateRequest() // UpdateCertificateRequest | JSON body of the updated certificate
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificatesAPI.UpdateCertificateByID(context.Background(), id).UpdateCertificateRequest(updateCertificateRequest).Execute()
+    resp, r, err := apiClient.CertificatesAPI.UpdateCertificateByID(context.Background(), id).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificatesAPI.UpdateCertificateByID``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,7 +329,7 @@ Other parameters are passed through a pointer to a apiUpdateCertificateByIDReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateCertificateRequest** | [**UpdateCertificateRequest**](UpdateCertificateRequest.md) | JSON body of the updated certificate | 
+ **body** | [**UpdateCertificateRequest**](UpdateCertificateRequest.md) | JSON body of the updated certificate | 
 
 ### Return type
 
