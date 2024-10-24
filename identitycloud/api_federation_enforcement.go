@@ -159,14 +159,14 @@ func (a *FederationEnforcementAPIService) internalGetEnforcementExecute(r ApiGet
 }
 
 type ApiSetEnforcementRequest struct {
-	ctx                   context.Context
-	ApiService            *FederationEnforcementAPIService
-	federationEnforcement *FederationEnforcement
+	ctx        context.Context
+	ApiService *FederationEnforcementAPIService
+	body       *FederationEnforcement
 }
 
 // Enforcement settings to apply to the tenant
-func (r ApiSetEnforcementRequest) FederationEnforcement(federationEnforcement FederationEnforcement) ApiSetEnforcementRequest {
-	r.federationEnforcement = &federationEnforcement
+func (r ApiSetEnforcementRequest) Body(body FederationEnforcement) ApiSetEnforcementRequest {
+	r.body = &body
 	return r
 }
 
@@ -226,8 +226,8 @@ func (a *FederationEnforcementAPIService) internalSetEnforcementExecute(r ApiSet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.federationEnforcement == nil {
-		return localVarReturnValue, nil, reportError("federationEnforcement is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -248,7 +248,7 @@ func (a *FederationEnforcementAPIService) internalSetEnforcementExecute(r ApiSet
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.federationEnforcement
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

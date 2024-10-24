@@ -318,14 +318,14 @@ func (a *ContentSecurityPolicyAPIService) internalGetReportOnlyContentSecurityPo
 }
 
 type ApiSetEnforcedContentSecurityPolicyRequest struct {
-	ctx                   context.Context
-	ApiService            *ContentSecurityPolicyAPIService
-	contentSecurityPolicy *ContentSecurityPolicy
+	ctx        context.Context
+	ApiService *ContentSecurityPolicyAPIService
+	body       *ContentSecurityPolicy
 }
 
 // Enforced content security policy to apply to the tenant
-func (r ApiSetEnforcedContentSecurityPolicyRequest) ContentSecurityPolicy(contentSecurityPolicy ContentSecurityPolicy) ApiSetEnforcedContentSecurityPolicyRequest {
-	r.contentSecurityPolicy = &contentSecurityPolicy
+func (r ApiSetEnforcedContentSecurityPolicyRequest) Body(body ContentSecurityPolicy) ApiSetEnforcedContentSecurityPolicyRequest {
+	r.body = &body
 	return r
 }
 
@@ -385,8 +385,8 @@ func (a *ContentSecurityPolicyAPIService) internalSetEnforcedContentSecurityPoli
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.contentSecurityPolicy == nil {
-		return localVarReturnValue, nil, reportError("contentSecurityPolicy is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -407,7 +407,7 @@ func (a *ContentSecurityPolicyAPIService) internalSetEnforcedContentSecurityPoli
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.contentSecurityPolicy
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -478,14 +478,14 @@ func (a *ContentSecurityPolicyAPIService) internalSetEnforcedContentSecurityPoli
 }
 
 type ApiSetReportOnlyContentSecurityPolicyRequest struct {
-	ctx                   context.Context
-	ApiService            *ContentSecurityPolicyAPIService
-	contentSecurityPolicy *ContentSecurityPolicy
+	ctx        context.Context
+	ApiService *ContentSecurityPolicyAPIService
+	body       *ContentSecurityPolicy
 }
 
 // Enforced content security policy to apply to the tenant
-func (r ApiSetReportOnlyContentSecurityPolicyRequest) ContentSecurityPolicy(contentSecurityPolicy ContentSecurityPolicy) ApiSetReportOnlyContentSecurityPolicyRequest {
-	r.contentSecurityPolicy = &contentSecurityPolicy
+func (r ApiSetReportOnlyContentSecurityPolicyRequest) Body(body ContentSecurityPolicy) ApiSetReportOnlyContentSecurityPolicyRequest {
+	r.body = &body
 	return r
 }
 
@@ -545,8 +545,8 @@ func (a *ContentSecurityPolicyAPIService) internalSetReportOnlyContentSecurityPo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.contentSecurityPolicy == nil {
-		return localVarReturnValue, nil, reportError("contentSecurityPolicy is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -567,7 +567,7 @@ func (a *ContentSecurityPolicyAPIService) internalSetReportOnlyContentSecurityPo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.contentSecurityPolicy
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

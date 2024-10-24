@@ -72,7 +72,7 @@ Other parameters are passed through a pointer to a apiGetEnforcementRequest stru
 
 ## SetEnforcement
 
-> FederationEnforcement SetEnforcement(ctx).FederationEnforcement(federationEnforcement).Execute()
+> FederationEnforcement SetEnforcement(ctx).Body(body).Execute()
 
 Set enforcement of federation
 
@@ -91,11 +91,11 @@ import (
 )
 
 func main() {
-    federationEnforcement := *openapiclient.NewFederationEnforcement("Groups_example") // FederationEnforcement | Enforcement settings to apply to the tenant
+    body := *openapiclient.NewFederationEnforcement("Groups_example") // FederationEnforcement | Enforcement settings to apply to the tenant
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FederationEnforcementAPI.SetEnforcement(context.Background()).FederationEnforcement(federationEnforcement).Execute()
+    resp, r, err := apiClient.FederationEnforcementAPI.SetEnforcement(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederationEnforcementAPI.SetEnforcement``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -116,7 +116,7 @@ Other parameters are passed through a pointer to a apiSetEnforcementRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **federationEnforcement** | [**FederationEnforcement**](FederationEnforcement.md) | Enforcement settings to apply to the tenant | 
+ **body** | [**FederationEnforcement**](FederationEnforcement.md) | Enforcement settings to apply to the tenant | 
 
 ### Return type
 

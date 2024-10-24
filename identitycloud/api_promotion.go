@@ -1213,7 +1213,7 @@ type ApiRollbackRequest struct {
 	ctx              context.Context
 	ApiService       *PromotionAPIService
 	acceptAPIVersion *string
-	rollbackRequest  *RollbackRequest
+	body             *RollbackRequest
 }
 
 // protocol&#x3D;1.0,resource&#x3D;1.0
@@ -1223,8 +1223,8 @@ func (r ApiRollbackRequest) AcceptAPIVersion(acceptAPIVersion string) ApiRollbac
 }
 
 // A request body with info required to initiate a rollback
-func (r ApiRollbackRequest) RollbackRequest(rollbackRequest RollbackRequest) ApiRollbackRequest {
-	r.rollbackRequest = &rollbackRequest
+func (r ApiRollbackRequest) Body(body RollbackRequest) ApiRollbackRequest {
+	r.body = &body
 	return r
 }
 
@@ -1287,8 +1287,8 @@ func (a *PromotionAPIService) internalRollbackExecute(r ApiRollbackRequest) (*Ro
 	if r.acceptAPIVersion == nil {
 		return localVarReturnValue, nil, reportError("acceptAPIVersion is required and must be specified")
 	}
-	if r.rollbackRequest == nil {
-		return localVarReturnValue, nil, reportError("rollbackRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1310,7 +1310,7 @@ func (a *PromotionAPIService) internalRollbackExecute(r ApiRollbackRequest) (*Ro
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-API-Version", r.acceptAPIVersion, "")
 	// body params
-	localVarPostBody = r.rollbackRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1382,7 +1382,7 @@ type ApiStartRequest struct {
 	ctx              context.Context
 	ApiService       *PromotionAPIService
 	acceptAPIVersion *string
-	promotionRequest *PromotionRequest
+	body             *PromotionRequest
 }
 
 // protocol&#x3D;1.0,resource&#x3D;1.0
@@ -1392,8 +1392,8 @@ func (r ApiStartRequest) AcceptAPIVersion(acceptAPIVersion string) ApiStartReque
 }
 
 // A request body with info required to initiate a promotion
-func (r ApiStartRequest) PromotionRequest(promotionRequest PromotionRequest) ApiStartRequest {
-	r.promotionRequest = &promotionRequest
+func (r ApiStartRequest) Body(body PromotionRequest) ApiStartRequest {
+	r.body = &body
 	return r
 }
 
@@ -1456,8 +1456,8 @@ func (a *PromotionAPIService) internalStartExecute(r ApiStartRequest) (*Promotio
 	if r.acceptAPIVersion == nil {
 		return localVarReturnValue, nil, reportError("acceptAPIVersion is required and must be specified")
 	}
-	if r.promotionRequest == nil {
-		return localVarReturnValue, nil, reportError("promotionRequest is required and must be specified")
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1479,7 +1479,7 @@ func (a *PromotionAPIService) internalStartExecute(r ApiStartRequest) (*Promotio
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-API-Version", r.acceptAPIVersion, "")
 	// body params
-	localVarPostBody = r.promotionRequest
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

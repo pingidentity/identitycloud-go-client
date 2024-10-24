@@ -72,7 +72,7 @@ Other parameters are passed through a pointer to a apiGetCookieDomainsRequest st
 
 ## SetCookieDomains
 
-> CookieDomains SetCookieDomains(ctx).CookieDomains(cookieDomains).Execute()
+> CookieDomains SetCookieDomains(ctx).Body(body).Execute()
 
 Set cookie domains
 
@@ -91,11 +91,11 @@ import (
 )
 
 func main() {
-    cookieDomains := *openapiclient.NewCookieDomains() // CookieDomains | Cookie domains
+    body := *openapiclient.NewCookieDomains() // CookieDomains | Cookie domains
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CookieDomainsAPI.SetCookieDomains(context.Background()).CookieDomains(cookieDomains).Execute()
+    resp, r, err := apiClient.CookieDomainsAPI.SetCookieDomains(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CookieDomainsAPI.SetCookieDomains``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -116,7 +116,7 @@ Other parameters are passed through a pointer to a apiSetCookieDomainsRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cookieDomains** | [**CookieDomains**](CookieDomains.md) | Cookie domains | 
+ **body** | [**CookieDomains**](CookieDomains.md) | Cookie domains | 
 
 ### Return type
 

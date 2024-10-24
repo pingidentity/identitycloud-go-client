@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## ActionVariable
 
-> ActionVariable(ctx, variableId).Action(action).EsvSetDescriptionRequest(esvSetDescriptionRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+> ActionVariable(ctx, variableId).Action(action).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
 
 Set a variable description
 
@@ -33,12 +33,12 @@ import (
 func main() {
     variableId := "variableId_example" // string | ID of the variable
     action := "action_example" // string | 
-    esvSetDescriptionRequest := *openapiclient.NewEsvSetDescriptionRequest("My secret") // EsvSetDescriptionRequest | The description of this variable
+    body := *openapiclient.NewEsvSetDescriptionRequest("My secret") // EsvSetDescriptionRequest | The description of this variable
     acceptAPIVersion := "acceptAPIVersion_example" // string | resource=2.0 (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.VariablesAPI.ActionVariable(context.Background(), variableId).Action(action).EsvSetDescriptionRequest(esvSetDescriptionRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+    r, err := apiClient.VariablesAPI.ActionVariable(context.Background(), variableId).Action(action).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VariablesAPI.ActionVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **action** | **string** |  | 
- **esvSetDescriptionRequest** | [**EsvSetDescriptionRequest**](EsvSetDescriptionRequest.md) | The description of this variable | 
+ **body** | [**EsvSetDescriptionRequest**](EsvSetDescriptionRequest.md) | The description of this variable | 
  **acceptAPIVersion** | **string** | resource&#x3D;2.0 | 
 
 ### Return type
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## CreateVariables
 
-> EsvVariableResponse CreateVariables(ctx, variableId).EsvVariableCreateUpdateRequest(esvVariableCreateUpdateRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+> EsvVariableResponse CreateVariables(ctx, variableId).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
 
 Create or update a variable
 
@@ -106,12 +106,12 @@ import (
 
 func main() {
     variableId := "variableId_example" // string | ID of the variable
-    esvVariableCreateUpdateRequest := *openapiclient.NewEsvVariableCreateUpdateRequest(string([B@18245eb0)) // EsvVariableCreateUpdateRequest | JSON body of the new variable
+    body := *openapiclient.NewEsvVariableCreateUpdateRequest(string([B@18245eb0)) // EsvVariableCreateUpdateRequest | JSON body of the new variable
     acceptAPIVersion := "acceptAPIVersion_example" // string | resource=2.0 (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VariablesAPI.CreateVariables(context.Background(), variableId).EsvVariableCreateUpdateRequest(esvVariableCreateUpdateRequest).AcceptAPIVersion(acceptAPIVersion).Execute()
+    resp, r, err := apiClient.VariablesAPI.CreateVariables(context.Background(), variableId).Body(body).AcceptAPIVersion(acceptAPIVersion).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VariablesAPI.CreateVariables``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +137,7 @@ Other parameters are passed through a pointer to a apiCreateVariablesRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **esvVariableCreateUpdateRequest** | [**EsvVariableCreateUpdateRequest**](EsvVariableCreateUpdateRequest.md) | JSON body of the new variable | 
+ **body** | [**EsvVariableCreateUpdateRequest**](EsvVariableCreateUpdateRequest.md) | JSON body of the new variable | 
  **acceptAPIVersion** | **string** | resource&#x3D;2.0 | 
 
 ### Return type

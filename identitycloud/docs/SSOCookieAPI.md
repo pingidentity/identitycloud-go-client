@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ## SetSSOCookie
 
-> SSOCookie SetSSOCookie(ctx).SSOCookie(sSOCookie).Execute()
+> SSOCookie SetSSOCookie(ctx).Body(body).Execute()
 
 Set SSO cookie configuration
 
@@ -158,11 +158,11 @@ import (
 )
 
 func main() {
-    sSOCookie := *openapiclient.NewSSOCookie("Name_example") // SSOCookie | SSO cookie configuration to apply to the tenant
+    body := *openapiclient.NewSSOCookie("Name_example") // SSOCookie | SSO cookie configuration to apply to the tenant
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SSOCookieAPI.SetSSOCookie(context.Background()).SSOCookie(sSOCookie).Execute()
+    resp, r, err := apiClient.SSOCookieAPI.SetSSOCookie(context.Background()).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SSOCookieAPI.SetSSOCookie``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -183,7 +183,7 @@ Other parameters are passed through a pointer to a apiSetSSOCookieRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sSOCookie** | [**SSOCookie**](SSOCookie.md) | SSO cookie configuration to apply to the tenant | 
+ **body** | [**SSOCookie**](SSOCookie.md) | SSO cookie configuration to apply to the tenant | 
 
 ### Return type
 

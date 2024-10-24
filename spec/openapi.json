@@ -203,6 +203,7 @@
       "post": {
         "description": "Upload a new certificate to the tenant.",
         "operationId": "createCertificate",
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -669,6 +670,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -966,6 +968,7 @@
       "put": {
         "description": "Specify enforced content security policy",
         "operationId": "setEnforcedContentSecurityPolicy",
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "$ref": "#/components/requestBodies/ContentSecurityPolicy"
         },
@@ -1224,6 +1227,7 @@
       "put": {
         "description": "Specify report-only content security policy",
         "operationId": "setReportOnlyContentSecurityPolicy",
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "$ref": "#/components/requestBodies/ContentSecurityPolicy"
         },
@@ -1506,6 +1510,7 @@
       "put": {
         "description": "Specify cookie domains",
         "operationId": "setCookieDomains",
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1856,6 +1861,7 @@
       "post": {
         "description": "Create a new certificate signing request",
         "operationId": "createCertificateSigningRequest",
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2298,6 +2304,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2491,6 +2498,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2787,6 +2795,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3036,6 +3045,7 @@
       "put": {
         "description": "Specify which admin groups are required to use federation",
         "operationId": "setEnforcement",
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3609,6 +3619,7 @@
             "$ref": "#/components/parameters/apiVersion"
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4201,6 +4212,7 @@
             "$ref": "#/components/parameters/apiVersion"
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4691,6 +4703,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4774,6 +4787,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4957,6 +4971,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5245,6 +5260,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5571,6 +5587,7 @@
       "put": {
         "description": "Specify SSO cookie configuration",
         "operationId": "setSSOCookie",
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6136,6 +6153,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6219,6 +6237,7 @@
             }
           }
         ],
+        "x-codegen-request-body-name": "body",
         "requestBody": {
           "content": {
             "application/json": {
