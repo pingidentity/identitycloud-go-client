@@ -42,7 +42,7 @@ func (s ServiceAccountTokenSource) Token() (*oauth2.Token, error) {
 	httpClient := &http.Client{}
 	httpResp, err := httpClient.Post(s.tokenUrl(), "application/x-www-form-urlencoded", strings.NewReader(formData.Encode()))
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to request access token with service account: %w", err)
 	}
 
 	defer httpResp.Body.Close()
