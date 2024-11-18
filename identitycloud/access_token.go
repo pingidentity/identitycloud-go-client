@@ -50,11 +50,14 @@ func (s ServiceAccountTokenSource) Token() (*oauth2.Token, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to read access token response body: %w", err)
 	}
+	if httpResp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("failed to request access token with service account. Status code: %d, body: %s", httpResp.StatusCode, body)
+	}
 
 	var token oauth2.Token
 	err = json.Unmarshal(body, &token)
 	if err != nil {
-		return nil, fmt.Errorf("failed to unmarshal access token response: %w", err)
+		return nil, fmt.Errorf("failed to unmarshal access token response: %w, body: %s", err, body)
 	}
 
 	token.Expiry = time.Now().Add(time.Duration(token.ExpiresIn) * time.Second)
