@@ -4,8 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
+	"regexp"
 	"strings"
 	"time"
 
@@ -20,6 +22,8 @@ var (
 	_ oauth2.TokenSource = ServiceAccountTokenSource{}
 )
 
+const maxOauthRetries = 4
+
 type ServiceAccountTokenSource struct {
 	TenantFqdn               string
 	ServiceAccountId         string
@@ -33,6 +37,12 @@ func (s ServiceAccountTokenSource) Token() (*oauth2.Token, error) {
 		return nil, fmt.Errorf("failed to build jwt: %w", err)
 	}
 
+	return oAuthExponentialBackOffRetry(func() (*oauth2.Token, error) {
+		return s.internalToken(jwt)
+	})
+}
+
+func (s ServiceAccountTokenSource) internalToken(jwt string) (*oauth2.Token, error) {
 	formData := url.Values{}
 	formData.Add("client_id", "service-account")
 	formData.Add("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer")
@@ -92,4 +102,52 @@ func (s ServiceAccountTokenSource) buildJwt() (string, error) {
 
 func (s ServiceAccountTokenSource) tokenUrl() string {
 	return fmt.Sprintf("https://%s:443/am/oauth2/access_token", s.TenantFqdn)
+}
+
+func oAuthExponentialBackOffRetry(f func() (*oauth2.Token, error)) (*oauth2.Token, error) {
+	var token *oauth2.Token
+	var err error
+	backOffTime := time.Second
+	var isRetryable bool
+
+	for i := 0; i < maxOauthRetries; i++ {
+		token, err = f()
+
+		if err != nil {
+			backOffTime, isRetryable = oAuthTestForRetryable(err, backOffTime)
+
+			if isRetryable {
+				log.Printf("Attempt %d failed: %v, backing off by %s.", i+1, err, backOffTime.String())
+				time.Sleep(backOffTime)
+				continue
+			}
+		}
+
+		return token, err
+	}
+
+	log.Printf("Request failed after %d attempts", maxOauthRetries)
+
+	return token, err // output the final error
+}
+
+func oAuthTestForRetryable(err error, currentBackoff time.Duration) (time.Duration, bool) {
+	backoff := currentBackoff * 2
+
+	retryAbleCodes := []int{
+		429,
+		500,
+		502,
+		503,
+		504,
+	}
+
+	for _, v := range retryAbleCodes {
+		if m, mErr := regexp.MatchString(fmt.Sprintf("%d ", v), err.Error()); mErr == nil && m {
+			log.Printf("HTTP status code %d detected, available for retry", v)
+			return backoff, true
+		}
+	}
+
+	return backoff, false
 }
