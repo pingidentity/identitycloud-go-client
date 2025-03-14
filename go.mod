@@ -1,11 +1,11 @@
 module github.com/pingidentity/identitycloud-go-client
 
-go 1.21
+go 1.23.2
 
 require (
 	github.com/google/uuid v1.6.0
 	github.com/lestrrat-go/jwx/v2 v2.1.3
-	golang.org/x/oauth2 v0.24.0
+	golang.org/x/oauth2 v0.28.0
 )
 
 require (
