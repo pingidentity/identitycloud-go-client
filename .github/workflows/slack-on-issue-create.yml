@@ -1,5 +1,8 @@
 name: Notify Slack on Issue Creation
 
+permissions:
+  issues: read
+
 on:
   issues:
     types: [opened]
